@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Doser Control</title>
+  <link rel="stylesheet" href="/app.css"/>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Aquarium Doser</h1>
+    <nav>
+      <a href="/">Control</a>
+      <a href="/log">Logs</a>
+    </nav>
+  </header>
+
+  <section class="card">
+    <h2>Status (live)</h2>
+    <pre id="status">—</pre>
+  </section>
+
+  <section class="card">
+    <h2>Quick Dose</h2>
+    <div>
+      <label>Pump
+        <select id="qdPump"><option value="0">0</option><option value="1">1</option></select>
+      </label>
+      <label>Amount (mL)
+        <input id="qdML" type="number" step="0.1" min="0" value="5">
+      </label>
+      <button id="btnRun">Start Dose</button>
+      <button id="btnStop">Stop</button>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h3>Prime / Purge (sec)</h3>
+      <label>Seconds <input id="ppSec" type="number" min="1" value="5"></label>
+      <div>
+        <button id="btnPrime0">Prime P0</button>
+        <button id="btnPurge0">Purge P0</button>
+      </div>
+      <div>
+        <button id="btnPrime1">Prime P1</button>
+        <button id="btnPurge1">Purge P1</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Settings</h3>
+      <div class="row">
+        <strong>Pump 0</strong>
+        <label>mL/sec <input id="p0mlps" type="number" step="0.01" value="1.0"></label>
+        <label>PWM (0-255) <input id="p0pwm" type="number" min="0" max="255" value="180"></label>
+      </div>
+      <div class="row">
+        <strong>Pump 1</strong>
+        <label>mL/sec <input id="p1mlps" type="number" step="0.01" value="1.0"></label>
+        <label>PWM (0-255) <input id="p1pwm" type="number" min="0" max="255" value="180"></label>
+      </div>
+      <button id="btnSave">Save Settings</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Weekly Schedule</h3>
+    <p>Add rows: Pump, Days, Time, mL</p>
+    <table id="schedTbl">
+      <thead><tr><th>Pump</th><th>Days</th><th>Time</th><th>mL</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <button id="addRow">+ Add</button>
+    <button id="saveSched">Save Schedule</button>
+  </section>
+</body>
+</html>

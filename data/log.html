@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Doser Logs</title>
+  <link rel="stylesheet" href="/app.css"/>
+  <script defer src="/log.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Logs</h1>
+    <nav>
+      <a href="/">Control</a>
+      <a href="/log">Logs</a>
+    </nav>
+  </header>
+
+  <section class="card">
+    <div class="row">
+      <label>Pump #
+        <select id="fPump"><option value="">Any</option><option>0</option><option>1</option><option>999</option></select>
+      </label>
+      <label>Event
+        <select id="fEvt"><option value="">Any</option><option>start</option><option>stop</option><option>prime</option><option>purge</option><option>info</option></select>
+      </label>
+      <label>Date from <input id="fFrom" type="date"></label>
+      <label>Date to <input id="fTo" type="date"></label>
+      <button id="btnToday">Today</button>
+      <button id="btn24h">Last 24h</button>
+      <button id="btnLoad">Load</button>
+      <button id="btnCSV">Export CSV</button>
+      <button id="btnClear">Clear Log</button>
+    </div>
+    <table id="logTbl">
+      <thead><tr>
+        <th>Date/Time</th><th>Pump</th><th>Requested mL</th><th>mL/sec</th><th>Sec</th><th>Event</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</body>
+</html>

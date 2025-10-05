@@ -1,18 +1,35 @@
 #include <Arduino.h>
+#include <WiFi.h>
+#include <LittleFS.h>
+#include "Config.h"
+#include "Timekeeper.h"
+#include "Pump.h"
+#include "Scheduler.h"
+#include "WebServerSetup.h"
+#include "Ota.h"
 
-// put function declarations here:
-int myFunction(int, int);
+void setup(){
+  Serial.begin(115200);
+  LittleFS.begin(true);
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+  uint32_t t0=millis(); while(WiFi.status()!=WL_CONNECTED && millis()-t0<20000){ delay(200); Serial.print("."); }
+  Serial.println(); Serial.print("IP: "); Serial.println(WiFi.localIP());
+
+  timeSetup();
+  webSetup();
+  otaSetup();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+uint32_t lastWS=0;
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void loop(){
+  pumpLoop();
+  schedulerLoop();
+  otaHandle();
+  if(millis()-lastWS>1000){
+    wsBroadcastStatus();
+    lastWS=millis();
+  }
 }

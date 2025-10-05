@@ -1,0 +1,12 @@
+body{font-family:system-ui,Arial,sans-serif;margin:0;background:#0b0f14;color:#eee}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#121824;border-bottom:1px solid #1e2633}
+nav a{color:#8ab4ff;margin-right:12px;text-decoration:none}
+.card{background:#121824;border:1px solid #1e2633;border-radius:12px;padding:12px;margin:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px}
+.row{display:flex;gap:12px;align-items:center;margin:6px 0}
+label{display:flex;gap:6px;align-items:center}
+input,select,button{background:#0f141b;color:#eee;border:1px solid #2a3547;border-radius:8px;padding:6px 8px}
+button{cursor:pointer}
+#schedTbl,#logTbl{width:100%;border-collapse:collapse}
+#schedTbl th,#schedTbl td,#logTbl th,#logTbl td{border-bottom:1px solid #243146;padding:6px}
+pre#status{white-space:pre-wrap;background:#0f141b;border:1px solid #2a3547;border-radius:8px;padding:8px}

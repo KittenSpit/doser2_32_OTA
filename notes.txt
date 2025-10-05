@@ -1,0 +1,18 @@
+NOTES (ESP32 Aquarium Doser - DRV8871 PH/EN + OTA)
+
+- DRV8871 mode: PH (direction) + EN (PWM). Adjust `Pins.h` for your wiring.
+- Concurrency: independent ActiveJob per pump (both pumps can run simultaneously).
+- WebSocket: `/ws` pushes status every second and after commands (shows running/type/mlps/delivered).
+- Schedule: Weekly bitmask per row; per-pump independence (colliding times OK).
+- Logging: CSV at `/log.csv`, startup INFO with pump 999; download `/api/log.csv`, clear `/api/log_clear`.
+- Settings: Saved in LittleFS (`/settings.json`), fields per pump: ml_per_sec, pwm.
+- Prime/Purge: Provide seconds; code converts to mL using current ml_per_sec so STOP shows delivered mL.
+- SQL logging: set `REMOTE_LOG_URL` in `Config.h` to your PHP endpoint; sample PHP in `server_php/`.
+- OTA: ArduinoOTA enabled. Change `OTA_HOSTNAME` and optional `OTA_PASSWORD` in `Config.h`.
+       To update: on same LAN, use `espota.py` or IDE OTA upload targeting the hostname/IP.
+- Build: `pio run -t uploadfs` to push UI, then `pio run -t upload` to flash firmware.
+
+Future ideas:
+- Add mDNS advertiser and show URL like `http://aquadoser-esp32.local/`.
+- Add basic auth if you ever expose UI beyond local network.
+- Support IN1/IN2 variant if you rewire DRV8871, and add explicit braking.
