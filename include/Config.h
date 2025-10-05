@@ -6,7 +6,7 @@
 
 // ===== WiFi (fill in) =====
 static const char* WIFI_SSID = "OtisandLily";
-static const char* WIFI_PASS = "SugareLake42!!";
+static const char* WIFI_PASS = "SugarLake42!!";
 
 // ===== Storage paths =====
 #define LOG_PATH        "/log.csv"
