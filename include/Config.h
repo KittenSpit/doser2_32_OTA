@@ -5,8 +5,8 @@
 #define TZ_EASTERN "EST5EDT,M3.2.0/2,M11.1.0/2"
 
 // ===== WiFi (fill in) =====
-static const char* WIFI_SSID = "YOUR_WIFI";
-static const char* WIFI_PASS = "YOUR_PASS";
+static const char* WIFI_SSID = "OtisandLily";
+static const char* WIFI_PASS = "SugareLake42!!";
 
 // ===== Storage paths =====
 #define LOG_PATH        "/log.csv"
